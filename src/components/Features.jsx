@@ -1,5 +1,43 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { TiLocationArrow } from "react-icons/ti";
+
+const BentoTilt = ({ children, className = "" }) => {
+  const [transformStyle, setTransformStyle] = useState("");
+  const itemRef = useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!itemRef.current) return;
+
+    const { left, top, width, height } =
+      itemRef.current.getBoundingClientRect();
+
+    const relativeX = (e.clientX - left) / width;
+    const relativeY = (e.clientY - top) / height;
+
+    const tiltX = (relativeX - 0.5) * 50;
+    const tiltY = (relativeY - 0.5) * -50;
+
+    const newTransform = `perspective(700px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(0.95,0.95,0.95)`;
+
+    setTransformStyle(newTransform);
+  };
+
+  const handleMouseLeave = (e) => {
+    setTransformStyle("");
+  };
+
+  return (
+    <div
+      className={className}
+      ref={itemRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ transform: transformStyle }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const BentoCard = ({ src, title, description, isComingSoon }) => {
   return (
@@ -41,7 +79,7 @@ const Features = () => {
         </div>
 
         {/* Bento layout starts from here */}
-        <div className="border-hsla rounded-xl relative mb-7 w-full overflow-hidden h-96 md:h-[65vh]">
+        <BentoTilt className="border-hsla rounded-xl relative mb-7 w-full overflow-hidden h-96 md:h-[65vh]">
           <BentoCard
             src="videos/feature-1.mp4"
             title={
@@ -51,12 +89,12 @@ const Features = () => {
             }
             description="A cross-platform metagame app, turning your activities across Web2 and Web3 games into a rewarding adventure."
           />
-        </div>
+        </BentoTilt>
 
         {/* other bento cards with grid layout */}
         <div className="grid grid-cols-2 grid-rows-3 h-[135vh] gap-7">
           {/* first card */}
-          <div className="border-hsla rounded-xl bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
+          <BentoTilt className="border-hsla rounded-xl bento-tilt_1 row-span-1 md:col-span-1 md:row-span-2">
             <BentoCard
               src="videos/feature-2.mp4"
               title={
@@ -66,10 +104,10 @@ const Features = () => {
               }
               description="An anime and gaming-inspired NFT collection - the IP primed for expansion."
             />
-          </div>
+          </BentoTilt>
 
           {/* second bento card */}
-          <div className="rounded-xl border-hsla bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
+          <BentoTilt className="rounded-xl border-hsla bento-tilt_1 row-span-1 ms-32 md:col-span-1 md:ms-0">
             <BentoCard
               src="videos/feature-3.mp4"
               title={
@@ -79,33 +117,33 @@ const Features = () => {
               }
               description="A gamified social hub, adding a new dimension of play to social interaction for Web3 communities."
             />
-          </div>
+          </BentoTilt>
           {/* third bento card */}
-          <div className="rounded-xl border-hsla bento-tilt_1 me-14 md:col-span-1 md:me-0">
+          <BentoTilt className="rounded-xl border-hsla bento-tilt_1 me-14 md:col-span-1 md:me-0">
             <BentoCard
               src="videos/feature-4.mp4"
               title={
                 <>
-                  az<b>u</b>re
+                  az<b>u</b>l
                 </>
               }
               description="A cross-world AI Agent - elevating your gameplay to be more fun and productive."
             />
-          </div>
+          </BentoTilt>
 
           {/* last two elements goes here */}
           {/* first element */}
-          <div className="bento-tilt_2">
+          <BentoTilt className="bento-tilt_2">
             <div className=" rounded-xl flex flex-col size-full p-5 bg-violet-300 justify-between">
               <h1 className="bento-title special-font mx-w-64 text-black">
                 M<b>o</b>re Comi<b>n</b>g So<b>o</b>n!
               </h1>
               <TiLocationArrow className="scale-[5] m-5 self-end" />
             </div>
-          </div>
+          </BentoTilt>
 
           {/* second element */}
-          <div className="rounded-xl bento-tilt_2">
+          <BentoTilt className="rounded-xl bento-tilt_2">
             <video
               src="videos/feature-5.mp4"
               muted
@@ -113,7 +151,7 @@ const Features = () => {
               autoPlay
               className="size-full object-center object-cover"
             />
-          </div>
+          </BentoTilt>
         </div>
       </div>
     </section>
