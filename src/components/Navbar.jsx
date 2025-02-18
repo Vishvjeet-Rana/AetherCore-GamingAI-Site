@@ -96,13 +96,13 @@ const Navbar = () => {
 
             {/* audio button */}
             <button
-              className="ml-10 space-x-0.5 flex items-center cursor-pointer"
+              className="ml-10 space-x-0.5 flex items-center justify-center border-animate cursor-pointer h-8 w-8 rounded-full"
               onClick={toggleAudioIndicator}
             >
               <audio
                 ref={audioElementRef}
                 className="hidden"
-                src="/audio/loop.mp3"
+                src="/audio/demonslayer.mp3"
                 loop
               />
               {[1, 2, 3, 4].map((bar) => (
