@@ -148,7 +148,7 @@ body {
 }
 
 @utility border-hsla {
-  border: var(--border-DEFAULT);
+  border: var(--border-DEFAULT, 1px solid); /* Added fallback */
   border-color: rgb(255 255 255 / 0.2);
 }
 
