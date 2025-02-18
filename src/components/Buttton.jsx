@@ -1,6 +1,6 @@
 import React from "react";
 
-const Buttton = ({ title, id, containerClass, leftIcon }) => {
+const Buttton = ({ title, id, containerClass, leftIcon, rightIcon }) => {
   return (
     <button
       id={id}
@@ -12,7 +12,7 @@ const Buttton = ({ title, id, containerClass, leftIcon }) => {
         {title}
       </span>
 
-      {/* {rightIcon} */}
+      {rightIcon}
     </button>
   );
 };
