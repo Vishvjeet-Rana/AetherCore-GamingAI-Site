@@ -70,7 +70,11 @@ const Navbar = () => {
         <nav className="flex size-full items-center justify-between p-4">
           {/* here are the items of navbar */}
           <div className="flex items-center gap-4">
-            <img src="/img/logo.png" alt="logo image" className="w-10" />
+            <img
+              src={`${import.meta.env.BASE_URL}logo.png`}
+              alt="logo image"
+              className="w-10"
+            />
 
             <Buttton
               id="product-button"
@@ -102,7 +106,7 @@ const Navbar = () => {
               <audio
                 ref={audioElementRef}
                 className="hidden"
-                src="/audio/loop.mp3"
+                src={`${import.meta.env.BASE_URL}demonslayer.mp3`}
                 loop
               />
               {[1, 2, 3, 4].map((bar) => (
