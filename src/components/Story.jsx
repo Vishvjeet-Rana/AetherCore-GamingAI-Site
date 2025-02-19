@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import AnimatedTitle from "./AnimatedTitle";
 import gsap from "gsap";
 import RoundedCorners from "./RoundedCorners";
+import Buttton from "./Buttton";
 
 const Story = () => {
   const frameRef = useRef(null);
@@ -53,15 +54,15 @@ const Story = () => {
         {/* animated title goes here */}
         <div className="relative size-full">
           <AnimatedTitle
-            title={"The st<b>o</b>ry of a <br/>hidden Real<b>m</b>"}
-            containerClass={`mt-5 pointer-events-none mix-blend-differnce relative z-10 text-center text-6xl sm:text-8xl special-font`}
+            title={"The st<b>o</b>ry of<br/> ahidden Real<b>m</b>"}
+            containerClass={`mt-5 pointer-events-none mix-blend-difference relative z-10 text-center text-6xl sm:text-8xl special-font`}
             sectionId="#story"
           />
 
           {/* image of story section */}
           <div className="story-img-container">
             <div className="story-img-mask">
-              <div className="story-img-mask">
+              <div className="story-img-content">
                 <img
                   onMouseEnter={handleMouseLeave}
                   onMouseLeave={handleMouseLeave}
@@ -76,6 +77,23 @@ const Story = () => {
             </div>
 
             <RoundedCorners />
+          </div>
+        </div>
+
+        {/* the text under image goes here */}
+        <div className="flex w-full justify-center -mt-80 md:-mt-64 md:me-44 md:justify-end">
+          <div className="flex flex-col h-full w-fit md:items-start items-center ">
+            <p className="font-circular-web max-w-sm text-center text-violet-50 md:text-start ">
+              Where realms converge, lies AetherCore and the boundless pillar.
+              Discover its secrets and shape your fate amidst infinite
+              opportunities.
+            </p>
+
+            <Buttton
+              id="realm-button"
+              title={"discover prologue"}
+              containerClass={`mt-5`}
+            />
           </div>
         </div>
       </div>

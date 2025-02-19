@@ -384,8 +384,8 @@ body {
   clip-path: polygon(4% 0, 83% 21%, 100% 73%, 0% 100%);
 
   @variant md {
-    left: 20%;
-    top: -10%;
+    left: 18%;
+    top: -12%;
     height: 80%;
     width: 80%;
   }
