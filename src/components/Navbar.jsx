@@ -71,7 +71,7 @@ const Navbar = () => {
           {/* here are the items of navbar */}
           <div className="flex items-center gap-4">
             <img
-              src={`${import.meta.env.BASE_URL}logo.png`}
+              src={`${import.meta.env.BASE_URL}img/logo.png`}
               alt="logo image"
               className="w-10"
             />
@@ -106,7 +106,7 @@ const Navbar = () => {
               <audio
                 ref={audioElementRef}
                 className="hidden"
-                src={`${import.meta.env.BASE_URL}demonslayer.mp3`}
+                src={`${import.meta.env.BASE_URL}audio/demonslayer.mp3`}
                 loop
               />
               {[1, 2, 3, 4].map((bar) => (
